@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adera Yoseph — Visual Director &amp; Multidisciplinary Artist</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+     theme: {
+        extend: {
+          colors: {
+            monoDark: '#050505',
+            monoSurface: '#121212',
+            monoCard: '#1a1a1a',
+            monoBorder: 'rgba(255, 255, 255, 0.12)',
+            monoMuted: '#737373',
+            monoLightMuted: '#a3a3a3',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Monochrome Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff;
+    }
+
+    /* Page Navigation Smooth Transitions */
+    .page-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .page-section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Glass Effect */
+    .mono-glass {
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+<body class="bg-monoDark text-zinc-100 font-sans antialiased overflow-x-hidden selection:bg-white selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- Main Navigation Header -->
+  <header class="fixed top-0 left-0 w-full z-50 mono-glass border-b border-monoBorder transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+      
+      <!-- Brand Logo / Name -->
+      <button onclick="navigateTo('home')" class="text-left text-lg md:text-xl font-extrabold tracking-widest uppercase text-white hover:text-zinc-400 transition-colors flex items-center gap-2">
+        <span class="w-2.5 h-2.5 bg-white inline-block"></span> ADERA YOSEPH
+      </button>
+
+      <!-- Desktop Navigation Tabs -->
+      <nav class="hidden lg:flex items-center space-x-7 text-xs font-semibold tracking-widest uppercase text-zinc-400">
+        <button onclick="navigateTo('home')" id="nav-home" class="nav-link text-white border-b-2 border-white pb-1 transition-all">Home</button>
+        <button onclick="navigateTo('about')" id="nav-about" class="nav-link hover:text-white pb-1 transition-all">About Me</button>
+        <button onclick="navigateTo('videography')" id="nav-videography" class="nav-link hover:text-white pb-1 transition-all">Videography</button>
+        <button onclick="navigateTo('photography')" id="nav-photography" class="nav-link hover:text-white pb-1 transition-all">Photography</button>
+        <button onclick="navigateTo('graphics')" id="nav-graphics" class="nav-link hover:text-white pb-1 transition-all">Graphic Design</button>
+        <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link hover:text-white pb-1 transition-all">Contact</button>
+      </nav>
+
+      <!-- Mobile Menu Trigger -->
+      <button id="mobileMenuBtn" class="lg:hidden text-zinc-200 hover:text-white focus:outline-none">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-monoSurface border-b border-monoBorder px-6 py-6 space-y-4 text-center text-xs tracking-widest uppercase font-semibold">
+      <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full py-2 text-zinc-300 hover:text-white">Home</button>
+      <button onclick="navigateTo('about'); toggleMobileMenu()" class="block w-full py-2 text-zinc-300 hover:text-white">About Me</button>
+      <button onclick="navigateTo('videography'); toggleMobileMenu()" class="block w-full py-2 text-zinc-300 hover:text-white">Videography</button>
+      <button onclick="navigateTo('photography'); toggleMobileMenu()" class="block w-full py-2 text-zinc-300 hover:text-white">Photography</button>
+      <button onclick="navigateTo('graphics'); toggleMobileMenu()" class="block w-full py-2 text-zinc-300 hover:text-white">Graphic Design</button>
+      <button onclick="navigateTo('contact'); toggleMobileMenu()" class="block w-full py-2 text-zinc-300 hover:text-white">Contact</button>
+    </div>
+  </header>
+
+  <!-- Main Multi-Page Container -->
+  <main class="pt-20 flex-grow">
+
+    <!-- ==================== PAGE 1: HOME ==================== -->
+    <section id="page-home" class="page-section active">
+      <!-- Hero Header with Background Video -->
+      <div class="relative w-full h-[85vh] flex flex-col justify-end px-6 md:px-12 pb-16 overflow-hidden border-b border-monoBorder">
+        <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-100 filter grayscale contrast-150" autoplay loop muted playsinline>
+          <source src="cbe1.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-monoDark via-monoDark/60 to-transparent"></div>
+
+        <div class="relative z-10 max-w-5xl">
+          <span class="inline-block px-3 py-1 mb-4 text-[11px] font-semibold tracking-widest uppercase text-zinc-300 bg-zinc-900 border border-monoBorder">
+            Videographer &amp; Editor
+          </span>
+          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-6 text-white uppercase">
+            Shoot raw . <br />
+            <span class="text-zinc-500"> Cut sharp .</span>
+          </h1>
+          <p class="text-base sm:text-lg text-zinc-400 font-light max-w-2xl leading-relaxed mb-8">
+            Specializing in high-end Videography, Video Editing, Motion Graphics, Editorial Photography, Graphic Design, and Code Architecture.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <button onclick="navigateTo('videography')" class="px-7 py-3.5 bg-white text-black font-bold uppercase text-xs tracking-widest hover:bg-zinc-300 transition-all flex items-center gap-2">
+              View Videography <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button onclick="navigateTo('photography')" class="px-7 py-3.5 bg-monoCard border border-monoBorder text-white font-bold uppercase text-xs tracking-widest hover:bg-zinc-800 transition-all">
+              Explore Photo Gallery
+            </button>
+          </div>
+        </div>
+
+        <!-- Sound Toggle -->
+        <button id="audioToggle" class="absolute bottom-8 right-6 md:right-12 z-20 flex items-center gap-2 px-4 py-2 text-[11px] uppercase tracking-widest bg-black/80 border border-monoBorder rounded-full backdrop-blur-md text-zinc-300 hover:text-white transition-colors">
+          <i data-lucide="volume-x" id="audioIcon" class="w-4 h-4"></i>
+          <span id="audioText">Mute</span>
+        </button>
+      </div>
+
+      <!-- Discipline Quick Overview Grid -->
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-20">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Creative Domains</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1 uppercase tracking-tight">Core Specializations</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Videography Box -->
+          <div onclick="navigateTo('videography')" class="group bg-monoCard p-8 border border-monoBorder cursor-pointer hover:border-white transition-all duration-300">
+            <div class="w-12 h-12 bg-monoSurface border border-monoBorder flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
+              <i data-lucide="video" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Videography </h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+              Cinema-grade filming, seamless video editing, color grading.
+            </p>
+            <span class="text-xs font-semibold uppercase tracking-widest text-zinc-400 group-hover:text-white inline-flex items-center gap-1">
+              Open Showcase <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+
+          <!-- Photography Box -->
+          <div onclick="navigateTo('photography')" class="group bg-monoCard p-8 border border-monoBorder cursor-pointer hover:border-white transition-all duration-300">
+            <div class="w-12 h-12 bg-monoSurface border border-monoBorder flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
+              <i data-lucide="camera" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Photography</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+              Editorial portraiture, dark atmospheric photography, architecture, and high-resolution visual series.
+            </p>
+            <span class="text-xs font-semibold uppercase tracking-widest text-zinc-400 group-hover:text-white inline-flex items-center gap-1">
+              View Gallery <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+
+          <!-- Graphic Design Box -->
+          <div onclick="navigateTo('graphics')" class="group bg-monoCard p-8 border border-monoBorder cursor-pointer hover:border-white transition-all duration-300">
+            <div class="w-12 h-12 bg-monoSurface border border-monoBorder flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
+              <i data-lucide="palette" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Motion Graphics</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+              Minimalist brand identities,nposters, digital marketing graphics and 2D/3D motion graphics sequences.
+            </p>
+            <span class="text-xs font-semibold uppercase tracking-widest text-zinc-400 group-hover:text-white inline-flex items-center gap-1">
+              Explore Designs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 2: ABOUT ME ==================== -->
+    <section id="page-about" class="page-section">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        
+        <!-- Header Title -->
+        <div class="mb-14 pb-6 border-b border-monoBorder">
+          <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Biography &amp; Background</span>
+          <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-1 uppercase tracking-tight">About Adera Yoseph</h1>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Image Portrait Column -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md h-[600px] border border-monoBorder bg-monoCard overflow-hidden group">
+              <img src="AboutME.jfif" alt="Adera Yoseph Portrait" class="w-full h-full object-cover filter grayscale contrast-100 group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider">Adera Yoseph</h3>
+                <p class="text-xs text-zinc-400 mt-0.5">Videographer | Editor | Developer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Narrative Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight">
+              Vision behind the lens, magic on the timeline .
+            </h2>
+            
+            <p class="text-zinc-300 leading-relaxed font-light text-base">
+              I am a <strong>Computer Science graduate</strong> with a profound passion for media production, visual storytelling, and graphic design. My technical background in computer science equips me with algorithmic logic, problem-solving efficiency, and structured execution qualities that directly enhance my workflow in software engineering, post-production video editing, color grading, and graphic design systems.
+            </p>
+
+            <p class="text-zinc-400 leading-relaxed font-light text-base">
+              Whether directing camera rigs for video shoots, editing commercial promos, keyframing motion graphics, capturing high-contrast photography, or designing brand graphics, my goal is to produce clean, timeless monochrome aesthetics and high-impact visual narratives.
+            </p>
+
+            <!-- CS & Creative Skill Stack Matrix -->
+            <div class="pt-6 border-t border-monoBorder space-y-4">
+              <h4 class="text-xs uppercase tracking-widest text-zinc-400 font-bold">Technical &amp; Creative Proficiency</h4>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+               
+
+                <div class="bg-monoCard p-4 border border-monoBorder">
+                  <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Video &amp; Motion</h5>
+                  <p class="text-xs text-zinc-400">Camera Rigging, Premiere Pro, DaVinci Resolve (Color Grading), Canva (2D/3D Motion)</p>
+                </div>
+
+                <div class="bg-monoCard p-4 border border-monoBorder">
+                  <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Photography &amp; Stills</h5>
+                  <p class="text-xs text-zinc-400">Lightroom Classic, Photoshop, Studio Lighting, Portraiture, Landscape &amp; Street</p>
+                </div>
+
+                <div class="bg-monoCard p-4 border border-monoBorder">
+                  <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Design &amp; Branding</h5>
+                  <p class="text-xs text-zinc-400">Illustrator, Figma, Brand Identity Systems, Typography Layouts, Poster Art</p>
+                </div>
+                <div class="bg-monoCard p-4 border border-monoBorder">
+                  <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Computer Science &amp; Dev</h5>
+                  <p class="text-xs text-zinc-400">Data Structures, Algorithms, Software Engineering, JavaScript, Python, HTML5/CSS3, Java, C++, PHP</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button onclick="navigateTo('contact')" class="px-7 py-3 bg-white text-black font-bold uppercase text-xs tracking-widest hover:bg-zinc-300 transition-all inline-flex items-center gap-2">
+                Get In Touch With Adera <i data-lucide="mail" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 3: VIDEOGRAPHY ==================== -->
+    <section id="page-videography" class="page-section">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        
+        <div class="mb-14 pb-6 border-b border-monoBorder flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Film &amp; Motion</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-1 uppercase tracking-tight">Videography Work</h1>
+          </div>
+          <p class="text-zinc-400 text-sm max-w-md">Video production, editing showreels, color grading, and motion graphics animations.</p>
+        </div>
+
+        <!-- Featured Showreel player -->
+        <div class="mb-16 bg-monoCard border border-monoBorder p-4 relative group">
+          <div class="relative w-full h-[420px] md:h-[500px] overflow-hidden bg-black flex items-center justify-center">
+            <video class="w-full h-full object-cover " autoplay loop muted playsinline>
+              <source src="cbe.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute bottom-8 left-8 right-8 z-10 flex flex-col md:flex-row justify-between md:items-end gap-4">
+              <div>
+                <span class="px-2.5 py-1 bg-white text-black font-bold text-[10px] uppercase tracking-wider">Video Highlight</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight mt-2">Cinematic Direction &amp; Editing Reel</h3>
+                <p class="text-xs text-zinc-300 max-w-lg mt-1">Commercial video edit highlighting camera movement, pacing, and color work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video & Motion Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Video Card 1 -->
+          <div class="bg-monoCard border border-monoBorder group hover:border-white transition-all">
+            <div class="relative h-60 overflow-hidden bg-black cursor-pointer" onclick="openVideoModal('Mountain Mist Story'">
+              <video class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" loop muted playsinline autoplay>
+                <source src="cbe1.mp4" type="video/mp4" />
+              </video>
+              <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+               
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Videography &amp; Color</span>
+              <h4 class="text-lg font-bold text-white uppercase tracking-tight mt-1">Ramadan Commercial Video</h4>
+              <p class="text-xs text-zinc-400 mt-2">Video shooting, grading, and sound mixing.</p>
+            </div>
+          </div>
+
+          <!-- Video Card 2 (Motion Graphics) -->
+          <div class="bg-monoCard border border-monoBorder group hover:border-white transition-all">
+            <div class="relative h-60 overflow-hidden bg-black cursor-pointer">
+              <video class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" loop muted playsinline autoplay>
+                <source src="Final Sequence.mp4" type="video/mp4" />
+              </video>
+              <div class="absolute inset-0 bg-black/40"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-2 py-1 bg-zinc-900 border border-monoBorder text-[10px] font-bold text-white uppercase tracking-widest">Tutorial Video</span>
+              </div>
+            
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Video &amp; Motion Graphics</span>
+              <h4 class="text-lg font-bold text-white uppercase tracking-tight mt-1">Abritech Arduino Course</h4>
+              <p class="text-xs text-zinc-400 mt-2">Tutorial video for Abritech</p>
+            </div>
+          </div>
+              <div class="bg-monoCard border border-monoBorder group hover:border-white transition-all">
+            <div class="relative h-60 overflow-hidden bg-black cursor-pointer">
+              <video class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" loop muted playsinline autoplay>
+                <source src="v3.mp4" type="video/mp4" />
+              </video>
+              <div class="absolute inset-0 bg-black/40"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-2 py-1 bg-zinc-900 border border-monoBorder text-[10px] font-bold text-white uppercase tracking-widest">Tutorial Video</span>
+              </div>
+            
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Video</span>
+              <h4 class="text-lg font-bold text-white uppercase tracking-tight mt-1">Awradoro Leather Products Video</h4>
+              <p class="text-xs text-zinc-400 mt-2">Portrait Video</p>
+            </div>
+          </div>
+
+
+          
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 4: PHOTOGRAPHY ==================== -->
+    <section id="page-photography" class="page-section">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        
+        <div class="mb-12 pb-6 border-b border-monoBorder flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Coffee Farm</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-1 uppercase tracking-tight">Photography Gallery</h1>
+          </div>
+          
+          <!-- Category Filter Buttons -->
+          <div class="flex flex-wrap gap-2" id="photoFilters">
+            <button onclick="filterPhotos('all')" class="photo-filter-btn px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border border-white bg-white text-black transition-all">All</button>
+            <button onclick="filterPhotos('portrait')" class="photo-filter-btn px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border border-monoBorder bg-monoCard text-zinc-400 hover:text-white transition-all">Portraits</button>
+            <button onclick="filterPhotos('landscape')" class="photo-filter-btn px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border border-monoBorder bg-monoCard text-zinc-400 hover:text-white transition-all">Landscape</button>
+            <button onclick="filterPhotos('Commercial')" class="photo-filter-btn px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border border-monoBorder bg-monoCard text-zinc-400 hover:text-white transition-all">Commercial</button>
+          </div>
+        </div>
+
+        <!-- Photo Masonry / Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="photoGrid">
+          
+          <!-- Photo 1: Portrait -->
+          <div class="photo-item group bg-monoCard border border-monoBorder overflow-hidden cursor-pointer" data-category="portrait" >
+            <div class="h-80 overflow-hidden relative">
+              <img src="3.jpg" alt="Low-Key Portrait" class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <span class="text-xs font-bold uppercase tracking-wider text-white bg-black/80 px-3 py-1 border border-monoBorder">Portrait</span>
+                <span class="w-8 h-8 bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="text-sm font-bold text-white uppercase tracking-wider">Outdoor Portrait</h4>
+            </div>
+          </div>
+
+          <!-- Photo 2: Landscape -->
+          <div class="photo-item group bg-monoCard border border-monoBorder overflow-hidden cursor-pointer" data-category="landscape" >
+            <div class="h-80 overflow-hidden relative">
+              <img src="1.jpg" alt="Landscape Photo" class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <span class="text-xs font-bold uppercase tracking-wider text-white bg-black/80 px-3 py-1 border border-monoBorder">Landscape</span>
+                <span class="w-8 h-8 bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="text-sm font-bold text-white uppercase tracking-wider">Snap Coffee Farm</h4>
+            </div>
+          </div>
+
+          <!-- Photo 3: Street -->
+          <div class="photo-item group bg-monoCard border border-monoBorder overflow-hidden cursor-pointer" data-category="Commercial" >
+            <div class="h-80 overflow-hidden relative">
+              <img src="2.jpg" alt="Street Photography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <span class="text-xs font-bold uppercase tracking-wider text-white bg-black/80 px-3 py-1 border border-monoBorder">Commercial</span>
+                <span class="w-8 h-8 bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="text-sm font-bold text-white uppercase tracking-wider">Leather Shop Photo</h4>
+            </div>
+          </div>
+
+         
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 5: GRAPHIC DESIGN ==================== -->
+    <section id="page-graphics" class="page-section">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        
+        <div class="mb-14 pb-6 border-b border-monoBorder">
+          <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Adera Yoseph's</span>
+          <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-1 uppercase tracking-tight">Graphic Design Works</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Graphic Item 1 -->
+          <div class="bg-monoCard border border-monoBorder p-6 group hover:border-white transition-all cursor-pointer" >
+            <div class="h-80 overflow-hidden relative bg-black mb-6">
+              <video class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" loop muted playsinline autoplay>
+                <source src="v1_1.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">AbriTech Motion Design</span>
+            <h3 class="text-xl font-bold text-white uppercase tracking-wide mt-1">Animated Narrative Video</h3>
+            <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Landscape Motion Graphics Video</p>
+          </div>
+
+          <!-- Graphic Item 2 -->
+          <div class="bg-monoCard border border-monoBorder p-6 group hover:border-white transition-all cursor-pointer" >
+            <div class="h-80 overflow-hidden relative bg-black mb-6">
+              <video class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" loop muted playsinline autoplay>
+                <source src="v2.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Izone Technologies</span>
+            <h3 class="text-xl font-bold text-white uppercase tracking-wide mt-1">Motion Design</h3>
+            <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Complete visual Motion Graphics Video</p>
+          </div>
+
+          <!-- Graphic Item 3 -->
+          <div class="bg-monoCard border border-monoBorder p-6 group hover:border-white transition-all cursor-pointer" >
+            <div class="h-80 overflow-hidden relative bg-black mb-6">
+              <video class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-700" loop muted playsinline autoplay>
+                <source src="v4.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">AbriTech</span>
+            <h3 class="text-xl font-bold text-white uppercase tracking-wide mt-1">AbriTech Python Course </h3>
+            <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Python Course Introduction Motion Graphic Video <Video></Video></p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 6: CONTACT ==================== -->
+    <section id="page-contact" class="page-section">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        
+        <div class="mb-14 pb-6 border-b border-monoBorder">
+          <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Get In Touch</span>
+          <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-1 uppercase tracking-tight">Contact Adera Yoseph</h1>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Contact Info -->
+          <div class="lg:col-span-5 space-y-6">
+            <h3 class="text-2xl font-bold text-white uppercase tracking-tight">Let's discuss your project</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">
+              Available for videography production, video editing, photography projects, graphic design inquiries, and software development collaborations.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-monoBorder">
+              <div>
+                <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Email Address</p>
+                <div class="flex items-center gap-2 mt-1">
+                  <a href="mailto:aderajoseph24@gmail.com" class="text-white hover:text-zinc-300 text-lg font-bold">
+                    aderajoseph24@gmail.com
+                  </a>
+                  <button onclick="copyEmail()" class="p-1.5 bg-monoCard border border-monoBorder text-zinc-300 hover:text-white hover:border-white transition-all" title="Copy Email">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <p id="copyAlert" class="text-[11px] text-zinc-400 mt-1 hidden">Copied to clipboard!</p>
+              </div>
+              <div>
+                <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Phone Number</p>
+                <div class="flex items-center gap-2 mt-1">
+                  <a href="" class="text-white hover:text-zinc-300 text-lg font-bold">
+                    0919165584
+                  </a>
+                  <button onclick="copyphone()" class="p-1.5 bg-monoCard border border-monoBorder text-zinc-300 hover:text-white hover:border-white transition-all" title="Copy Email">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <p id="copyAlert" class="text-[11px] text-zinc-400 mt-1 hidden">Copied to clipboard!</p>
+              </div>
+
+              <div class="pt-2">
+                <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Location</p>
+                <p class="text-sm font-medium text-white mt-0.5">Addis Ababa</p>
+              </div>
+               <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md h-[550px] border border-monoBorder bg-monoCard overflow-hidden group">
+              <img src="mycont.jpg" alt="Adera Yoseph Portrait" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider">Adera Yoseph</h3>
+                <p class="text-xs text-zinc-400 mt-0.5">Videographer | Editor | Developer</p>
+              </div>
+            </div>
+          </div>
+
+            </div>
+
+           
+
+          </div>
+
+         
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-monoDark border-t border-monoBorder text-center text-[11px] text-zinc-500 uppercase tracking-widest">
+    <p>&copy; 2026 Adera Yoseph. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox Photo & Graphic Modal -->
+  <div id="mediaModal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative bg-monoCard border border-monoBorder max-w-4xl w-full overflow-hidden">
+      <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-black/80 p-2 text-zinc-300 hover:text-white border border-monoBorder">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modalMediaContainer" class="w-full h-[400px] sm:h-[500px] bg-black flex items-center justify-center"></div>
+
+      <div class="p-6 border-t border-monoBorder">
+        <h3 id="modalTitle" class="text-xl font-bold text-white uppercase tracking-tight">Title</h3>
+        <p id="modalDesc" class="text-zinc-400 text-xs mt-1 leading-relaxed">Description</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Client-Side Navigation Script -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Multi-Page SPA Tab Switcher
+    function navigateTo(pageId) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page-section');
+      pages.forEach(p => p.classList.remove('active'));
+
+      // Deactivate all nav links
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.classList.remove('text-white', 'border-b-2', 'border-white');
+        link.classList.add('hover:text-white');
+      });
+
+      // Show targeted page
+      const targetPage = document.getElementById(`page-${pageId}`);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      // Highlight active nav button
+      const activeNav = document.getElementById(`nav-${pageId}`);
+      if (activeNav) {
+        activeNav.classList.add('text-white', 'border-b-2', 'border-white');
+      }
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+
+    // Audio Mute/Unmute for Hero Video
+    const heroVideo = document.getElementById('heroVideo');
+    const audioToggle = document.getElementById('audioToggle');
+    const audioText = document.getElementById('audioText');
+    const audioIcon = document.getElementById('audioIcon');
+
+    if (audioToggle) {
+      audioToggle.addEventListener('click', () => {
+        heroVideo.muted = !heroVideo.muted;
+        if (heroVideo.muted) {
+          audioText.textContent = "Mute";
+          audioIcon.setAttribute('data-lucide', 'volume-x');
+        } else {
+          audioText.textContent = "Unmute";
+          audioIcon.setAttribute('data-lucide', 'volume-2');
+        }
+        lucide.createIcons();
+      });
+    }
+
+    // Photo Gallery Category Filtering
+    function filterPhotos(category) {
+      const photoItems = document.querySelectorAll('.photo-item');
+      const filterBtns = document.querySelectorAll('.photo-filter-btn');
+
+      filterBtns.forEach(btn => {
+        btn.classList.remove('bg-white', 'text-black', 'border-white');
+        btn.classList.add('bg-monoCard', 'text-zinc-400', 'border-monoBorder');
+      });
+
+      event.target.classList.remove('bg-monoCard', 'text-zinc-400', 'border-monoBorder');
+      event.target.classList.add('bg-white', 'text-black', 'border-white');
+
+      photoItems.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Popup Logic for Photography & Graphic Items
+   function openPhotoModal(title, imgUrl, desc) {
+      const modal = document.getElementById('mediaModal');
+      const mContainer = document.getElementById('modalMediaContainer');
+      const mTitle = document.getElementById('modalTitle');
+      const mDesc = document.getElementById('modalDesc');
+
+      mTitle.textContent = title;
+      mDesc.textContent = desc;
+      mContainer.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-contain filter grayscale contrast-125" />`;
+
+      modal.classList.remove('hidden');
+    }
+
+    // Modal Popup Logic for Video Items
+    function openVideoModal(title, videoUrl) {
+      const modal = document.getElementById('mediaModal');
+      const mContainer = document.getElementById('modalMediaContainer');
+      const mTitle = document.getElementById('modalTitle');
+      const mDesc = document.getElementById('modalDesc');
+
+      mTitle.textContent = title;
+      mDesc.textContent = "Videography & Post-Production Motion Sequence";
+      mContainer.innerHTML = `<video class="w-full h-full object-contain filter grayscale contrast-125" controls autoplay><source src="${videoUrl}" type="video/mp4" /></video>`;
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('mediaModal');
+      const mContainer = document.getElementById('modalMediaContainer');
+      mContainer.innerHTML = '';
+      modal.classList.add('hidden');
+    }
+
+    // Copy Email helper
+    function copyEmail() {
+      const emailText = "aderajoseph24@gmail.com";
+      const dummyInput = document.createElement("input");
+      document.body.appendChild(dummyInput);
+      dummyInput.value = emailText;
+      dummyInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummyInput);
+
+      const alertEl = document.getElementById('copyAlert');
+      alertEl.classList.remove('hidden');
+      setTimeout(() => alertEl.classList.add('hidden'), 3000);
+    }
+    function copyphone() {
+      const phoneText = "0919165584";
+      const dummyInput = document.createElement("input");
+      document.body.appendChild(dummyInput);
+      dummyInput.value = phoneText;
+      dummyInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummyInput);
+
+      const alertEl = document.getElementById('copyAlert');
+      alertEl.classList.remove('hidden');
+      setTimeout(() => alertEl.classList.add('hidden'), 3000);
+    }
+    // Contact form submit simulation
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const alert = document.getElementById('formAlert');
+      alert.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => alert.classList.add('hidden'), 5000);
+    });
+  </script>
+</body>
+</html>
